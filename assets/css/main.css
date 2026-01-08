@@ -9873,6 +9873,9 @@ margin-top: 30px;
   padding: 80px 50px;
   border: 1px solid var(--tg-border-2);
 }
+.features__item.homepage {
+  min-height: 330px;
+}
 @media (max-width: 1800px) {
   .features__item {
     padding: 80px 30px;
