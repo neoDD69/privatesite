@@ -1444,9 +1444,12 @@ margin-top: 30px;
   padding: 12px 0;
 }
 @media (max-width: 767.98px) {
-  .tg-header__top {
+  /*.tg-header__top {
     display: none;
-  }
+  }*/
+  ul.tg-header__top-left.list-wrap {
+    display: none;
+}
 }
 .tg-header__top-info {
   display: -webkit-box;
