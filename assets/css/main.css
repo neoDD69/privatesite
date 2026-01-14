@@ -2246,6 +2246,10 @@ margin-top: 30px;
 /*=============================
 	03. Mobile Menu
 ===============================*/
+.mobile-nav-toggler {
+  position: relative;
+  z-index: 10000;
+}
 html.mobile-menu-visible,
 body.mobile-menu-visible {
   overflow: hidden;
