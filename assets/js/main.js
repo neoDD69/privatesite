@@ -37,14 +37,14 @@ if ($('.tgmobile__menu').length) {
 		$(this).prev('ul').slideToggle(300);
 	});
 	//Menu Toggle Btn
-	$('.mobile-nav-toggler').on('click', function () {
-		$('body').addClass('mobile-menu-visible');
-	});
-
-	//Menu Toggle Btn
-	$('.tgmobile__menu-backdrop, .tgmobile__menu .close-btn').on('click', function () {
-		$('body').removeClass('mobile-menu-visible');
-	});
+	$(document).on('click', '.mobile-nav-toggler', function (e) {
+      e.preventDefault();
+      $('html, body').addClass('mobile-menu-visible');
+    });
+    
+    $(document).on('click', '.tgmobile__menu-backdrop, .tgmobile__menu .close-btn', function () {
+      $('html, body').removeClass('mobile-menu-visible');
+    });
 };
 
 
