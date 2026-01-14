@@ -39,11 +39,11 @@ if ($('.tgmobile__menu').length) {
 	//Menu Toggle Btn
 	$(document).on('click', '.mobile-nav-toggler', function (e) {
       e.preventDefault();
-      $('html, body').addClass('mobile-menu-visible');
+      $('body').addClass('mobile-menu-visible');
     });
     
     $(document).on('click', '.tgmobile__menu-backdrop, .tgmobile__menu .close-btn', function () {
-      $('html, body').removeClass('mobile-menu-visible');
+      $('body').removeClass('mobile-menu-visible');
     });
 };
 
