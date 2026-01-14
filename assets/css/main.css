@@ -2246,10 +2246,6 @@ margin-top: 30px;
 /*=============================
 	03. Mobile Menu
 ===============================*/
-.mobile-nav-toggler {
-  position: relative;
-  z-index: 10000;
-}
 html.mobile-menu-visible,
 body.mobile-menu-visible {
   overflow: hidden;
@@ -2506,6 +2502,7 @@ body.mobile-menu-visible {
   opacity: 0;
   visibility: hidden;
   background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
 }
 .tgmobile__menu .tgmenu__action {
   padding: 0 0;
@@ -2626,6 +2623,7 @@ body.mobile-menu-visible {
 .mobile-menu-visible .tgmobile__menu-backdrop {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
 }
 .mobile-menu-visible .tgmobile__menu .close-btn {
   -webkit-transform: rotate(360deg);
