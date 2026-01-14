@@ -18,35 +18,53 @@ $(window).on('load', function () {
 
 
 /*===========================================
-	=    		Mobile Menu			      =
+=             Mobile Menu                   =
 =============================================*/
-//SubMenu Dropdown Toggle
-if ($('.tgmenu__wrap li.menu-item-has-children ul').length) {
-	$('.tgmenu__wrap .navigation li.menu-item-has-children').append('<div class="dropdown-btn"><span class="plus-line"></span></div>');
-}
+$(document).ready(function() {
 
-//Mobile Nav Hide Show
-if ($('.tgmobile__menu').length) {
+    // Copia menu desktop nel mobile
+    if ($('.tgmobile__menu').length) {
+        var mobileMenuContent = $('.tgmenu__wrap .tgmenu__main-menu').html();
+        $('.tgmobile__menu .tgmobile__menu-outer').append(mobileMenuContent);
 
-	var mobileMenuContent = $('.tgmenu__wrap .tgmenu__main-menu').html();
-	$('.tgmobile__menu .tgmobile__menu-box .tgmobile__menu-outer').append(mobileMenuContent);
+        // Aggiunge dropdown button
+        $('.tgmobile__menu li.menu-item-has-children').append('<div class="dropdown-btn"><span class="plus-line"></span></div>');
 
-	//Dropdown Button
-	$('.tgmobile__menu li.menu-item-has-children .dropdown-btn').on('click', function () {
-		$(this).toggleClass('open');
-		$(this).prev('ul').slideToggle(300);
-	});
-	//Menu Toggle Btn
-	$(document).on('click', '.mobile-nav-toggler', function (e) {
-      e.preventDefault();
-      $('body').addClass('mobile-menu-visible');
-    });
-    
-    $(document).on('click', '.tgmobile__menu-backdrop, .tgmobile__menu .close-btn', function () {
-      $('body').removeClass('mobile-menu-visible');
-    });
-};
+        // Dropdown open/close
+        $(document).on('click', '.tgmobile__menu li.menu-item-has-children .dropdown-btn', function() {
+            $(this).toggleClass('open');
+            $(this).prev('ul').slideToggle(300);
+        });
 
+        // Apri menu
+        $(document).on('click', '.mobile-nav-toggler', function(e) {
+            e.preventDefault();
+            $('body').addClass('mobile-menu-visible');
+        });
+
+        // Chiudi menu
+        $(document).on('click', '.tgmobile__menu-backdrop, .tgmobile__menu .close-btn', function() {
+            $('body').removeClass('mobile-menu-visible');
+        });
+    }
+
+    //=== IUBENDA COOKIE ===//
+    if (typeof _iub !== "undefined") {
+        _iub.csConfiguration.onConsentGiven = function() {
+            localStorage.setItem('iubenda_consent', 'yes');
+        };
+        _iub.csConfiguration.onConsentRejected = function() {
+            localStorage.setItem('iubenda_consent', 'no');
+        };
+
+        // Nasconde banner se già accettato/rifiutato
+        if (localStorage.getItem('iubenda_consent') === 'yes' || localStorage.getItem('iubenda_consent') === 'no') {
+            var banner = document.querySelector('.iubenda-cs-banner');
+            if(banner) banner.style.display = 'none';
+        }
+    }
+
+});
 
 
 /*=============================================
